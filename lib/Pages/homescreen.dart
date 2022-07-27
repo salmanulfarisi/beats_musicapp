@@ -5,7 +5,6 @@ import 'package:beats/Db/playlistdb.dart';
 import 'package:beats/Pages/Screen/nowplaying.dart';
 import 'package:beats/Pages/widgets/getsong.dart';
 import 'package:beats/Pages/widgets/favbutton.dart';
-import 'package:beats/Pages/widgets/gradientcontainer.dart';
 import 'package:beats/splash.dart';
 import 'package:beats/utilits/globalcolors.dart';
 import 'package:beats/widgets/ratedialoge.dart';
@@ -283,7 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 FavaroiteDb.initialise(items.data!);
               }
               GetSong.songscopy = items.data!;
-              GetSong.playingSongs = items.data!;
+
               return GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
@@ -308,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => NowPlayingScreen(
-                                songModel: items.data!,
+                                playersong: items.data!,
                               ),
                             ),
                           );

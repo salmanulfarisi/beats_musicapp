@@ -92,13 +92,14 @@ class _PlaylistFolderState extends State<PlaylistFolder> {
                           return ListTile(
                             onTap: () {
                               List<SongModel> newList = [...playlistSong];
+                              GetSong.player.stop();
                               GetSong.player.setAudioSource(
-                                  GetSong.createSongList([newList[index]]));
+                                  GetSong.createSongList(newList));
+                              GetSong.player.play();
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => NowPlayingScreen(
-                                        songModel: [playlistSong[index]],
+                                        playersong: playlistSong,
                                       )));
-                              GetSong.player.play();
                             },
                             leading: QueryArtworkWidget(
                               id: playlistSong[index].id,

@@ -128,7 +128,7 @@ class _ScreenFavaroitState extends State<ScreenFavaroit> {
                                           MaterialPageRoute(
                                               builder: (ctx) =>
                                                   NowPlayingScreen(
-                                                    songModel: newList,
+                                                    playersong: newList,
                                                   )));
                                     },
                                     leading: QueryArtworkWidget(

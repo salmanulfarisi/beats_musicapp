@@ -37,7 +37,7 @@ class _MiniState extends State<Mini> {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => NowPlayingScreen(
-                songModel: GetSong.playingSongs,
+                playersong: GetSong.playingSongs,
               ),
             ),
           );

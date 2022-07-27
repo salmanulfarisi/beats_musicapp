@@ -15,9 +15,9 @@ import 'package:rxdart/rxdart.dart';
 class NowPlayingScreen extends StatefulWidget {
   const NowPlayingScreen({
     Key? key,
-    required this.songModel,
+    required this.playersong,
   }) : super(key: key);
-  final List<SongModel> songModel;
+  final List<SongModel> playersong;
 
   // int index;
 
@@ -81,6 +81,9 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (GetSong.playingSongs.last.id != widget.playersong.last.id) {
+      GetSong.player.stop();
+    }
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Container(
@@ -103,6 +106,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
           centerTitle: true,
           leading: IconButton(
               onPressed: () {
+                // setState(() {});
                 Navigator.pop(context);
                 FavaroiteDb.favaroiteList.notifyListeners();
               },
@@ -115,8 +119,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
             style: TextStyle(fontWeight: FontWeight.bold, color: black),
           ),
         ),
-        body: SafeArea(
-            child: Container(
+        body: Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -137,7 +140,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                         icon: Icons.music_note,
                         size: 100,
                       ),
-                      id: widget.songModel[currentIndex].id,
+                      id: widget.playersong[currentIndex].id,
                       type: ArtworkType.AUDIO,
                       artworkBorder: BorderRadius.circular(200.0),
                       keepOldArtwork: true,
@@ -157,7 +160,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                   // ),
                   SizedBox(height: MediaQuery.of(context).size.height / 20),
                   AnimatedText(
-                    text: widget.songModel[currentIndex].displayNameWOExt
+                    text: widget.playersong[currentIndex].displayNameWOExt
                         .split('(')[0]
                         .split('|')[0]
                         .trim(),
@@ -173,7 +176,8 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                   ),
                   const SizedBox(height: 18.0),
                   AnimatedText(
-                      text: widget.songModel[currentIndex].artist ?? "Unkonown",
+                      text:
+                          widget.playersong[currentIndex].artist ?? "Unkonown",
                       pauseAfterRound: const Duration(seconds: 3),
                       showFadingOnlyWhenScrolling: false,
                       fadingEdgeEndFraction: 0.1,
@@ -183,6 +187,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                         fontWeight: FontWeight.bold,
                         color: white,
                       )),
+
                   // Text(widget.songModel[currentIndex].displayNameWOExt,
                   //     overflow: TextOverflow.fade,
                   //     maxLines: 1,
@@ -266,10 +271,10 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                               //       ),
                             );
                           }),
-                      FavButton(song: widget.songModel[currentIndex]),
+                      FavButton(song: widget.playersong[currentIndex]),
                     ],
                   ),
-
+                  SizedBox(height: height / 25),
                   // Container(
                   //     child: FavButton(song: widget.songModel[currentIndex])),
 
@@ -355,6 +360,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
                           );
                         },
                       ),
+
                       // ElevatedButton(
                       //     style: ElevatedButton.styleFrom(
                       //         elevation: 0,
@@ -699,7 +705,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
               )
             ],
           ),
-        )),
+        ),
       ),
     );
   }
