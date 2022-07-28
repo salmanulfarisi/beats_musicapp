@@ -25,13 +25,14 @@ class PlayListDB implements Playlist {
     final playListDB = await Hive.openBox<PlayListModel>(playlist_Db_Name);
     playListnotifier.value.clear();
     playListnotifier.value.addAll(playListDB.values);
+    playListnotifier.notifyListeners();
   }
 
   @override
   Future<void> playlistAdd(PlayListModel model) async {
     final playListDB = await Hive.openBox<PlayListModel>(playlist_Db_Name);
     playListDB.add(model);
-    getAllPlaylist();
+    // getAllPlaylist();
     playListnotifier.value.add(model);
   }
 

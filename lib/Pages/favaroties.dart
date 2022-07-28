@@ -119,7 +119,8 @@ class _ScreenFavaroitState extends State<ScreenFavaroit> {
                                   return ListTile(
                                     onTap: () {
                                       List<SongModel> newList = [...favaorSong];
-                                      setState(() {});
+                                      // setState(() {});
+                                      GetSong.player.stop();
                                       GetSong.player.setAudioSource(
                                           createSongList(newList),
                                           initialIndex: index);
@@ -128,7 +129,7 @@ class _ScreenFavaroitState extends State<ScreenFavaroit> {
                                           MaterialPageRoute(
                                               builder: (ctx) =>
                                                   NowPlayingScreen(
-                                                    playersong: newList,
+                                                    playersong: favaorSong,
                                                   )));
                                     },
                                     leading: QueryArtworkWidget(

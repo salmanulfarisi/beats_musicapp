@@ -81,9 +81,9 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (GetSong.playingSongs.last.id != widget.playersong.last.id) {
-      GetSong.player.stop();
-    }
+    // if (GetSong.playingSongs.last.id != widget.playersong.last.id) {
+    //   GetSong.player.stop();
+    // }
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Container(
@@ -106,7 +106,7 @@ class _NowPlayingScreenState extends State<NowPlayingScreen> {
           centerTitle: true,
           leading: IconButton(
               onPressed: () {
-                // setState(() {});
+                //setState(() {});
                 Navigator.pop(context);
                 FavaroiteDb.favaroiteList.notifyListeners();
               },

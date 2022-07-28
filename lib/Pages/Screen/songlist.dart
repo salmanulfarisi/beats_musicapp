@@ -87,10 +87,18 @@ class _SongsListPageState extends State<SongsListPage> {
                               subtitle: Text("${item.data![index].artist}"),
                               trailing: IconButton(
                                   onPressed: () {
+                                    setState(() {});
                                     playlistCheck(item.data![index]);
                                     //     playlistnotifier.notifyListeners();
                                   },
-                                  icon: const Icon(Icons.add)),
+                                  icon: !widget.playlist
+                                          .isValueInList(item.data![index].id)
+                                      ? const Icon(Icons.add)
+                                      : const Icon(Icons.minimize),
+                                  color: !widget.playlist
+                                          .isValueInList(item.data![index].id)
+                                      ? white
+                                      : Colors.redAccent),
                             );
                           },
                           separatorBuilder: (ctx, index) {

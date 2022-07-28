@@ -21,7 +21,7 @@ class ScreenNavigatioin extends StatefulWidget {
 }
 
 class _ScreenNavigatioinState extends State<ScreenNavigatioin> {
-  int index = 0;
+  int currentinde = 0;
   final inactiveColor = white;
   final activeColor = Colors.grey;
 
@@ -38,7 +38,7 @@ class _ScreenNavigatioinState extends State<ScreenNavigatioin> {
     return Scaffold(
       extendBody: true,
       body: IndexedStack(
-        index: index,
+        index: currentinde,
         children: screens,
       ),
       bottomNavigationBar: ValueListenableBuilder(
@@ -48,9 +48,10 @@ class _ScreenNavigatioinState extends State<ScreenNavigatioin> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                GetSong.player.currentIndex != null
-                    ? const Mini()
-                    : const SizedBox(),
+                if (GetSong.player.currentIndex != null)
+                  const MiniPlayer()
+                else
+                  const SizedBox(),
 
                 buildBottomNavigation(),
                 // if(GetSong.player.currentIndex != null){
@@ -67,21 +68,21 @@ class _ScreenNavigatioinState extends State<ScreenNavigatioin> {
     );
   }
 
-  Widget buildBody() {
-    switch (index) {
-      case 1:
-        return const SearchScreen();
-      case 2:
-        return const ScreenFavaroit();
-      case 3:
-        return const ScreenPlaylist();
-      case 0:
-      default:
-        return HomeScreen(
-          rateMyApp: widget.rateMyApp,
-        );
-    }
-  }
+  // Widget buildBody() {
+  //   switch (index) {
+  //     case 1:
+  //       return const SearchScreen();
+  //     case 2:
+  //       return const ScreenFavaroit();
+  //     case 3:
+  //       return const ScreenPlaylist();
+  //     case 0:
+  //     default:
+  //       return HomeScreen(
+  //         rateMyApp: widget.rateMyApp,
+  //       );
+  //   }
+  // }
 
   Widget buildBottomNavigation() {
     return BottomNavyBar(
@@ -122,9 +123,10 @@ class _ScreenNavigatioinState extends State<ScreenNavigatioin> {
             )),
       ],
       onItemSelected: (index) => setState(() {
-        this.index = index;
+        currentinde = index;
+        FavaroiteDb.favaroiteList.notifyListeners();
       }),
-      selectedIndex: index,
+      selectedIndex: currentinde,
     );
   }
 }

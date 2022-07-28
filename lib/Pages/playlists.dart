@@ -1,5 +1,6 @@
 import 'package:beats/Db/playlistdb.dart';
-import 'package:beats/Pages/Screen/playlistfolder.dart';
+import 'package:beats/Pages/Screen/sample.dart';
+import 'package:beats/Lab/playlistfolder.dart';
 import 'package:beats/Pages/widgets/emptyscreen.dart';
 import 'package:beats/model/playlistmodel.dart';
 import 'package:beats/utilits/globalcolors.dart';
@@ -7,10 +8,14 @@ import 'package:beats/widgets/iconwidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:lottie/lottie.dart';
 import 'package:on_audio_query/on_audio_query.dart';
+import 'package:rate_my_app/src/core.dart';
 
 class ScreenPlaylist extends StatefulWidget {
-  const ScreenPlaylist({Key? key}) : super(key: key);
+  const ScreenPlaylist({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ScreenPlaylist> createState() => _ScreenPlaylistState();
@@ -105,41 +110,45 @@ class _ScreenPlaylistState extends State<ScreenPlaylist> {
                         itemBuilder: (BuildContext context, int index) {
                           final data = playlist.values.toList()[index];
                           return Card(
-                            shadowColor: Colors.white,
-                            elevation: 5,
-                            color: Colors.grey[900],
-                            child: ListTile(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => PlaylistFolder(
-                                          folderindex: index,
-                                          playlistModel: data,
-                                          // playlistSong: playlistSong,
-                                        )));
-                              },
-                              leading: const Icon(Icons.folder,
-                                  color: Colors.deepOrange),
-                              title: Text(
-                                data.name,
-                                style: const TextStyle(
-                                    color: white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              // subtitle: Text(PlayListModel.} songs',
-                              //     style: const TextStyle(
-                              //         color: white,
-                              //         fontSize: 14,
-                              //         fontWeight: FontWeight.bold)),
-                              trailing: IconButton(
+                              shadowColor: Colors.white,
+                              elevation: 5,
+                              color: Colors.grey[900],
+                              child: ListTile(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => PlaylistData(
+                                            folderindex: index, playlist: data,
+
+                                            // playlistSong: playlistSong,
+                                          )));
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => PlaylistFolder(
+                                  //           folderindex: index,
+                                  //           playlistModel: data,
+                                  //           // playlistSong: playlistSong,
+                                  //         )));
+                                },
+                                leading: const Icon(Icons.folder,
+                                    color: Colors.deepOrange),
+                                title: Text(
+                                  data.name,
+                                  style: const TextStyle(
+                                      color: white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                // subtitle: Text(PlayListModel.} songs',
+                                //     style: const TextStyle(
+                                //         color: white,
+                                //         fontSize: 14,
+                                //         fontWeight: FontWeight.bold)),
+                                trailing: IconButton(
                                   onPressed: () {
                                     showDeleteDialog(context, index);
                                   },
-                                  icon: const IconWidget(
-                                      color: Colors.redAccent,
-                                      icon: Icons.delete)),
-                            ),
-                          );
+                                  icon: Lottie.asset('assets/Delete.json'),
+                                ),
+                              ));
                           // return InkWell(
                           //   onTap: () {
                           //     Navigator.pushNamed(context, '/playlist',
