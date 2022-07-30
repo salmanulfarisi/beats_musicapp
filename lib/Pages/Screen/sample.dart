@@ -146,266 +146,269 @@ class _PlaylistDataState extends State<PlaylistData> {
                               trailing: IconButton(
                                   onPressed: () {
                                     showModalBottomSheet(
-                                        backgroundColor: Colors.transparent,
-                                        context: context,
-                                        builder: (builder) {
-                                          return Container(
-                                            decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Colors.amberAccent,
-                                                    black.withOpacity(0.9),
-                                                  ],
-                                                  stops: const [0.5, 1],
-                                                ),
-                                                borderRadius: const BorderRadius
-                                                        .only(
-                                                    topLeft:
-                                                        Radius.circular(25.0),
-                                                    topRight:
-                                                        Radius.circular(25.0))),
-                                            child: SizedBox(
-                                              height: 350,
-                                              child: Column(
-                                                children: [
-                                                  Stack(
-                                                    children: [
-                                                      Container(
-                                                        height: 350,
-                                                        width: double.infinity,
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          color: transparent,
-                                                        ),
-                                                        child:
-                                                            QueryArtworkWidget(
-                                                                artworkBorder:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            25),
-                                                                artworkWidth:
-                                                                    100,
-                                                                artworkHeight:
-                                                                    400,
-                                                                nullArtworkWidget:
-                                                                    const Icon(
-                                                                  Icons
-                                                                      .music_note,
-                                                                  size: 100,
-                                                                ),
-                                                                id: playlistsong[
-                                                                        index]
-                                                                    .id,
-                                                                type:
-                                                                    ArtworkType
-                                                                        .AUDIO),
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (builder) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Colors.amberAccent,
+                                                  black.withOpacity(0.9),
+                                                ],
+                                                stops: const [0.5, 1],
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(25.0),
+                                                      topRight: Radius.circular(
+                                                          25.0))),
+                                          child: SizedBox(
+                                            height: 350,
+                                            child: Column(
+                                              children: [
+                                                Stack(
+                                                  children: [
+                                                    Container(
+                                                      height: 350,
+                                                      width: double.infinity,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        color: transparent,
                                                       ),
-                                                      Positioned(
-                                                        bottom: 0,
-                                                        child: Container(
-                                                          width: 360,
-                                                          height: 350,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            boxShadow: [
-                                                              BoxShadow(
-                                                                color: Colors
-                                                                    .black
-                                                                    .withOpacity(
-                                                                        0.5),
-                                                                spreadRadius:
-                                                                    30,
-                                                                blurRadius: 5,
-                                                                offset: const Offset(
-                                                                    8,
-                                                                    15), // changes position of shadow
+                                                      child: QueryArtworkWidget(
+                                                          artworkBorder:
+                                                              BorderRadius
+                                                                  .circular(25),
+                                                          artworkWidth: 100,
+                                                          artworkHeight: 400,
+                                                          nullArtworkWidget:
+                                                              const Icon(
+                                                            Icons.music_note,
+                                                            size: 100,
+                                                          ),
+                                                          id: playlistsong[
+                                                                  index]
+                                                              .id,
+                                                          type: ArtworkType
+                                                              .AUDIO),
+                                                    ),
+                                                    Positioned(
+                                                      bottom: 0,
+                                                      child: Container(
+                                                        width: 360,
+                                                        height: 350,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors
+                                                                  .black
+                                                                  .withOpacity(
+                                                                      0.5),
+                                                              spreadRadius: 30,
+                                                              blurRadius: 5,
+                                                              offset: const Offset(
+                                                                  8,
+                                                                  15), // changes position of shadow
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  bottom: 50,
+                                                                  left: 10),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Expanded(
+                                                                flex: 2,
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .end,
+                                                                  children: [
+                                                                    Text(
+                                                                      playlistsong[
+                                                                              index]
+                                                                          .displayNameWOExt,
+                                                                      style: const TextStyle(
+                                                                          overflow: TextOverflow
+                                                                              .ellipsis,
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontWeight: FontWeight
+                                                                              .bold,
+                                                                          fontSize:
+                                                                              20),
+                                                                    ),
+                                                                    Text(
+                                                                      playlistsong[
+                                                                              index]
+                                                                          .artist!,
+                                                                      style: const TextStyle(
+                                                                          overflow: TextOverflow
+                                                                              .ellipsis,
+                                                                          color: Colors
+                                                                              .white,
+                                                                          fontWeight: FontWeight
+                                                                              .bold,
+                                                                          fontSize:
+                                                                              10),
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
+                                                              Expanded(
+                                                                child: Row(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  // ignore: prefer_const_literals_to_create_immutables
+                                                                  children: [
+                                                                    FavButton(
+                                                                        song: playlistsong[
+                                                                            index]),
+                                                                    IconButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.of(context)
+                                                                            .pop();
+                                                                        widget
+                                                                            .playlist
+                                                                            .remove(playlistsong[index].id);
+                                                                      },
+                                                                      icon: Lottie
+                                                                          .asset(
+                                                                              'assets/Delete.json'),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              )
+                                                              // const Expanded(
+                                                              //   flex: 1,
+                                                              //   child: Icon(
+                                                              //       Icons
+                                                              //           .abc),
+                                                              // ),
+                                                              // const Expanded(
+                                                              //   flex: 1,
+                                                              //   child: Icon(
+                                                              //       Icons
+                                                              //           .abc),
+                                                              // ),
                                                             ],
                                                           ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    bottom: 50,
-                                                                    left: 10),
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .end,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Expanded(
-                                                                  flex: 2,
-                                                                  child: Column(
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .end,
-                                                                    children: [
-                                                                      Text(
-                                                                        playlistsong[index]
-                                                                            .displayNameWOExt,
-                                                                        style: const TextStyle(
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            color: Colors.white,
-                                                                            fontWeight: FontWeight.bold,
-                                                                            fontSize: 20),
-                                                                      ),
-                                                                      Text(
-                                                                        playlistsong[index]
-                                                                            .artist!,
-                                                                        style: const TextStyle(
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            color: Colors.white,
-                                                                            fontWeight: FontWeight.bold,
-                                                                            fontSize: 10),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                                Expanded(
-                                                                  child: Row(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    // ignore: prefer_const_literals_to_create_immutables
-                                                                    children: [
-                                                                      FavButton(
-                                                                          song:
-                                                                              playlistsong[index]),
-                                                                      IconButton(
-                                                                        onPressed:
-                                                                            () {
-                                                                          Navigator.of(context)
-                                                                              .pop();
-                                                                          widget
-                                                                              .playlist
-                                                                              .remove(playlistsong[index].id);
-                                                                        },
-                                                                        icon: Lottie.asset(
-                                                                            'assets/Delete.json'),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                )
-                                                                // const Expanded(
-                                                                //   flex: 1,
-                                                                //   child: Icon(
-                                                                //       Icons
-                                                                //           .abc),
-                                                                // ),
-                                                                // const Expanded(
-                                                                //   flex: 1,
-                                                                //   child: Icon(
-                                                                //       Icons
-                                                                //           .abc),
-                                                                // ),
-                                                              ],
-                                                            ),
-                                                          ),
                                                         ),
                                                       ),
-                                                      // Container(
-                                                      //   alignment: Alignment
-                                                      //       .bottomLeft,
-                                                      //   child: Column(
-                                                      //     children: [
-                                                      //       Text(
-                                                      //         playlistsong[
-                                                      //                 index]
-                                                      //             .title,
-                                                      //         style: const TextStyle(
-                                                      //             color: Colors
-                                                      //                 .white,
-                                                      //             fontSize: 20),
-                                                      //       ),
-                                                      //     ],
-                                                      //   ),
-                                                      // )
-                                                    ],
-                                                  ),
+                                                    ),
+                                                    // Container(
+                                                    //   alignment: Alignment
+                                                    //       .bottomLeft,
+                                                    //   child: Column(
+                                                    //     children: [
+                                                    //       Text(
+                                                    //         playlistsong[
+                                                    //                 index]
+                                                    //             .title,
+                                                    //         style: const TextStyle(
+                                                    //             color: Colors
+                                                    //                 .white,
+                                                    //             fontSize: 20),
+                                                    //       ),
+                                                    //     ],
+                                                    //   ),
+                                                    // )
+                                                  ],
+                                                ),
 
-                                                  // Expanded(
-                                                  //   child: Text(
-                                                  //     playlistsong[index].title,
-                                                  //     style: const TextStyle(
-                                                  //         color: Colors.black,
-                                                  //         fontSize: 20,
-                                                  //         fontWeight:
-                                                  //             FontWeight.bold),
-                                                  //   ),
-                                                  // ),
-                                                  // Padding(
-                                                  //   padding:
-                                                  //       const EdgeInsets.all(
-                                                  //           18.0),
-                                                  //   // child: Column(
-                                                  //   //   mainAxisAlignment:
-                                                  //   //       MainAxisAlignment
-                                                  //   //           .start,
-                                                  //   //   crossAxisAlignment:
-                                                  //   //       CrossAxisAlignment
-                                                  //   //           .start,
-                                                  //   //   children: [
-                                                  //   //     ElevatedButton.icon(
-                                                  //   //         style: ElevatedButton
-                                                  //   //             .styleFrom(
-                                                  //   //                 primary: Colors
-                                                  //   //                     .white),
-                                                  //   //         onPressed: () {
-                                                  //   //           widget.playlist.remove(
-                                                  //   //               playlistsong[
-                                                  //   //                       index]
-                                                  //   //                   .id);
-                                                  //   //           Navigator.of(
-                                                  //   //                   context)
-                                                  //   //               .pop();
-                                                  //   //         },
-                                                  //   //         icon: const Icon(
-                                                  //   //           Icons
-                                                  //   //               .delete_outline_outlined,
-                                                  //   //           size: 25,
-                                                  //   //         ),
-                                                  //   //         label: const Text(
-                                                  //   //           'Remove Song',
-                                                  //   //           style: TextStyle(
-                                                  //   //             color: Colors
-                                                  //   //                 .black,
-                                                  //   //             fontSize: 20,
-                                                  //   //           ),
-                                                  //   //         )),
-                                                  //   //     // Row(
-                                                  //   //     //   children: [
-                                                  //   //     //     FavButton(
-                                                  //   //     //       song:
-                                                  //   //     //           playlistsong[
-                                                  //   //     //               index],
-                                                  //   //     //     ),
-                                                  //   //     //     // const Text(
-                                                  //   //     //     //   'Add to Favorite',
-                                                  //   //     //     //   style: TextStyle(
-                                                  //   //     //     //       color: Colors
-                                                  //   //     //     //           .white,
-                                                  //   //     //     //       fontSize: 20),
-                                                  //   //     //     // )
-                                                  //   //     //   ],
-                                                  //   //     // ),
-                                                  //   //   ],
-                                                  //   // ),
-                                                  // )
-                                                ],
-                                              ),
+                                                // Expanded(
+                                                //   child: Text(
+                                                //     playlistsong[index].title,
+                                                //     style: const TextStyle(
+                                                //         color: Colors.black,
+                                                //         fontSize: 20,
+                                                //         fontWeight:
+                                                //             FontWeight.bold),
+                                                //   ),
+                                                // ),
+                                                // Padding(
+                                                //   padding:
+                                                //       const EdgeInsets.all(
+                                                //           18.0),
+                                                //   // child: Column(
+                                                //   //   mainAxisAlignment:
+                                                //   //       MainAxisAlignment
+                                                //   //           .start,
+                                                //   //   crossAxisAlignment:
+                                                //   //       CrossAxisAlignment
+                                                //   //           .start,
+                                                //   //   children: [
+                                                //   //     ElevatedButton.icon(
+                                                //   //         style: ElevatedButton
+                                                //   //             .styleFrom(
+                                                //   //                 primary: Colors
+                                                //   //                     .white),
+                                                //   //         onPressed: () {
+                                                //   //           widget.playlist.remove(
+                                                //   //               playlistsong[
+                                                //   //                       index]
+                                                //   //                   .id);
+                                                //   //           Navigator.of(
+                                                //   //                   context)
+                                                //   //               .pop();
+                                                //   //         },
+                                                //   //         icon: const Icon(
+                                                //   //           Icons
+                                                //   //               .delete_outline_outlined,
+                                                //   //           size: 25,
+                                                //   //         ),
+                                                //   //         label: const Text(
+                                                //   //           'Remove Song',
+                                                //   //           style: TextStyle(
+                                                //   //             color: Colors
+                                                //   //                 .black,
+                                                //   //             fontSize: 20,
+                                                //   //           ),
+                                                //   //         )),
+                                                //   //     // Row(
+                                                //   //     //   children: [
+                                                //   //     //     FavButton(
+                                                //   //     //       song:
+                                                //   //     //           playlistsong[
+                                                //   //     //               index],
+                                                //   //     //     ),
+                                                //   //     //     // const Text(
+                                                //   //     //     //   'Add to Favorite',
+                                                //   //     //     //   style: TextStyle(
+                                                //   //     //     //       color: Colors
+                                                //   //     //     //           .white,
+                                                //   //     //     //       fontSize: 20),
+                                                //   //     //     // )
+                                                //   //     //   ],
+                                                //   //     // ),
+                                                //   //   ],
+                                                //   // ),
+                                                // )
+                                              ],
                                             ),
-                                          );
-                                        });
+                                          ),
+                                        );
+                                      },
+                                    );
                                   },
                                   icon: const Icon(
                                     Icons.more_vert_sharp,
